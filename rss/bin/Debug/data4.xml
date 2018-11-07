@@ -1,0 +1,457 @@
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Хабр / Интересные публикации</title>
+    <link>https://habr.com/</link>
+    <description><![CDATA[Интересные публикации на Хабре]]></description>
+    <language>ru</language>
+    <managingEditor>editor@habr.com</managingEditor>
+    <generator>habr.com</generator>
+    <pubDate>Wed, 07 Nov 2018 19:51:38 GMT</pubDate>
+    <lastBuildDate>
+    </lastBuildDate>
+    <image>
+      <link>https://habr.com/</link>
+      <url>https://habr.com/images/logo.png</url>
+      <title>Хабр</title>
+    </image>
+    <item>
+      <title><![CDATA[[Перевод] Java Challengers #2: Сравнение строк]]></title>
+      <guid isPermaLink="true">https://habr.com/post/428449/</guid>
+      <link>https://habr.com/post/428449/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428449</link>
+      <description><![CDATA[<h1 id="java-challengers-2-sravnenie-strok">Java Challengers #2: Сравнение строк</h1><br>
+<p><em>У нас как всегда много опаздывающих к началу курса, так что только вчера провели второе занятие среди нового потока <a href="https://otus.pw/I0ex/">"Разработчик Java"</a>. Но это так, мелочи жизни, а пока что мы продолжаем публикацию серии статей Java Challengers, перевод которых подготовили для вас.</em></p><br>
+<p>В Java класс <code>String</code> инкапсулирует массив <code>char</code> (<em>прим. переводчика — с java 9 это уже массив <code>byte</code>, см. <a href="https://habr.com/company/otus/blog/426621/">Компактные строки в Java 9</a></em>). Говоря по простому, <code>String</code> — это массив символов, используемый для составления слов, предложений или других конструкций.</p><br>
+<p><strong>Инкапсуляция</strong> — это одна из самых мощных концепций объектно — ориентированного программирования. Благодаря инкапсуляции вам не нужно знать как работает класс <a href="https://docs.oracle.com/javase/10/docs/api/java/lang/String.html"><code>String</code></a>. Вам достаточно знать методы его интерфейса.</p> <a href="https://habr.com/post/428449/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428449#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 17:58:36 GMT</pubDate>
+      <dc:creator>spv32</dc:creator>
+      <category><![CDATA[Блог компании Отус]]></category>
+      <category><![CDATA[Java]]></category>
+      <category><![CDATA[Программирование]]></category>
+      <category>java</category>
+    </item>
+    <item>
+      <title><![CDATA[Git subtree в деталях]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429014/</guid>
+      <link>https://habr.com/post/429014/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429014</link>
+      <description><![CDATA[<p>Принимая решение об использовании того или иного средства в собственных проектах, инженеру приходится не только изучать сопроводительную документацию, но и проводить серию экспериментов для того, чтобы избежать потенциальных проблем в будущем. Если же речь идет о CM-политике, рассчитанной на длительную перспективу, цена ошибки выбора становится достаточно высока.<br>
+</p><br>
+<p>Целью настоящей работы является практическое изучение средства управления поддеревьями <a href="https://git-scm.com/"><b>Git</b></a>.<br>
+</p><br>
+<br>
+<p>Начиная с ревизии <b>1.7.11</b> upstream-репозиторий <b>Git</b>, в каталоге <a href="https://git.kernel.org/pub/scm/git/git.git/tree/contrib/subtree">contrib/subtree</a>, содержит средство автоматизации работы с <a href="https://github.com/apenwarr/git-subtree">поддеревьями</a>.<br>
+</p><br>
+<p>Сервис <b><em>git-subtree(1)</em></b> фактически является полезной надстройкой, использующей функции <b><em>git-read-tree(1)</em></b> и <b><em>git-write-tree(1)</em></b>. Поэтому ссылки <b> в командах <b><em>git-subtree(1)</em></b> <b><em>add/pull/push</em></b>:<br>
+</b><br>
+</p><pre><code class="bash">  git subtree add --prefix=&lt;subdir&gt; &lt;remote&gt; &lt;ref&gt;
+</code></pre><br>
+<p>могут представлять собой, как имена веток, так и имена тегов удаленного репозитория.<br>
+</p><br>
+<p>Кроме того, если заранее добавить удаленный репозиторий в конфигурационный файл локального репозитория <b>.git/config</b>, с помошью команды:<br>
+</p><br>
+<pre><code class="bash">bash-4.4$ git remote add build-system ../../remote/build-system.git
+</code></pre><br>
+<p>где <b>build-system</b> является именем удаленного репозитория <b>../../remote/build-system.git</b>, то в дальнейшем, при использовании команд <b><em>git-subtree(1) add/pull/push</em></b>, мы сможем ссылаться на upstream-репозиторий <b>remote/build-system.git</b> по имени.<br>
+</p><br>
+<p>На данный момент <b><em>git-subtree(1)</em></b> практически не развивается, а лишь поддерживается в актуальном состоянии для текущей степени развития проекта <a href="https://git.kernel.org/pub/scm/git/git.git/"><b>Git</b></a>.<br>
+</p><br>
+<p>Однако <b><em>git-subtree(1)</em></b> является наиболее популярным и мощным средством работы с поддеревьями.<br>
+</p><br> <a href="https://habr.com/post/429014/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429014#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 14:07:11 GMT</pubDate>
+      <dc:creator>rcl</dc:creator>
+      <category><![CDATA[Git]]></category>
+      <category><![CDATA[GitHub]]></category>
+      <category><![CDATA[Системы управления версиями]]></category>
+      <category><![CDATA[git]]></category>
+      <category><![CDATA[git-subtree]]></category>
+      <category><![CDATA[git-subrepo]]></category>
+      <category><![CDATA[githooks]]></category>
+      <category><![CDATA[git hooks]]></category>
+      <category><![CDATA[pre-receive]]></category>
+      <category><![CDATA[git-receive-pack]]></category>
+      <category><![CDATA[github]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Очень корпоративный пост: открываемся в Москве или почему 10 и 11 ноября — хорошие дни для покупки электроники]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429068/</guid>
+      <link>https://habr.com/post/429068/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429068</link>
+      <description><![CDATA[Сегодня небольшой пост о корпоративном событии, которое значимо для нас и, вероятно, будет полезным для наших московских читателей, а также для тех, кто окажется в столице 10-го и 11-го ноября. <br>
+<br>
+<i>Тем, кто уже приготовился клеймить нас за рекламную публикацию в комментариях, напомню, что за два с лишним года существования этого блога мы не публиковали джинсовых постов. Вся реклама, которая у нас появлялась, содержалась в абзацах, помеченных как “джинса”, а также в виджетах. </i><br>
+<br>
+<img src="https://habrastorage.org/webt/nr/7w/l9/nr7wl9r59rn72mmd_pb2ispcslu.jpeg"><br>
+<br>
+Итак, мы завершили ремонт и реорганизацию в нашем Московском магазине на ул. Орджоникидзе, д. 11, стр. 1А. Сейчас мы готовимся к открытию. Под катом несколько слов о том, как мы это делали, что у нас получилось и что ждет наших посетителей 10 и 11 ноября с 14:00 до 18:00.<br> <a href="https://habr.com/post/429068/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429068#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 14:39:37 GMT</pubDate>
+      <dc:creator>Sound_cULT</dc:creator>
+      <category><![CDATA[Блог компании Pult.ru]]></category>
+      <category><![CDATA[Гаджеты]]></category>
+      <category><![CDATA[Звук]]></category>
+      <category><![CDATA[Периферия]]></category>
+      <category><![CDATA[шоурум]]></category>
+      <category><![CDATA[комната для прослушивания]]></category>
+      <category><![CDATA[звук]]></category>
+      <category><![CDATA[аудио]]></category>
+      <category><![CDATA[электроника]]></category>
+      <category><![CDATA[скидки]]></category>
+      <category><![CDATA[техника]]></category>
+      <category><![CDATA[магазин]]></category>
+      <category><![CDATA[наушники]]></category>
+      <category><![CDATA[подарок]]></category>
+      <category><![CDATA[открытие]]></category>
+      <category><![CDATA[акустика]]></category>
+      <category><![CDATA[акустика помещений]]></category>
+    </item>
+    <item>
+      <title><![CDATA[«Найди N отличий». Опыт тестирования верстки Tinkoff.ru]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429054/</guid>
+      <link>https://habr.com/post/429054/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429054</link>
+      <description><![CDATA[Сколько отличий вы найдете за 10 секунд?<br>
+<br>
+<img src="https://habrastorage.org/webt/yv/qh/_z/yvqh_zsiieango28fgf74stqf_k.jpeg"><br>
+<br>
+Наш тестировщик найдет ВСЕ отличия. И даже те, которые не видны. Ниже я расскажу о том, как он это сделает, но для начала немного введу вас в курс дела.<br> <a href="https://habr.com/post/429054/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429054#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 16:28:57 GMT</pubDate>
+      <dc:creator>tinkoff_qa</dc:creator>
+      <category><![CDATA[Блог компании Tinkoff.ru]]></category>
+      <category><![CDATA[Тестирование IT-систем]]></category>
+      <category><![CDATA[Тестирование веб-сервисов]]></category>
+      <category><![CDATA[QVisual]]></category>
+      <category><![CDATA[тестирование верстки]]></category>
+      <category><![CDATA[tinkoff]]></category>
+    </item>
+    <item>
+      <title><![CDATA[[Из песочницы] Почему стелс в космосе все-таки есть]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429092/</guid>
+      <link>https://habr.com/post/429092/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429092</link>
+      <description><![CDATA[Привет, Хабр! В этой статье я хочу рассмотреть тему пока что не слишком актуальную в реальности, но будоражащую умы многих любителей (и, если можно так сказать) профессионалов научной фантастики — способы спрятаться в космосе при условии использования технологий исключительно обозримого будущего.<br/>
+<br/>
+В гик-среде существует <a href="http://www.projectrho.com/public_html/rocket/spacewardetect.php">расхожее мнение</a> о том что в сколько-нибудь реалистичном научно-фантастическом сеттинге стелса в космосе быть не может. Проблема в том что как только мы соберемся делать игру или писать книгу с претензией на реалистичность, то есть (по распространенному мнению) без стелса в космосе, выяснится что воевать без этого стелса несколько проблематично — оба участника сражения заранее могут просчитать его исход ибо игра-то с полной информацией. Это вынуждает игроделов либо делать KSP с пушками, либо уходить в космооперу, а писателей — писать не собственно научно-фантастические боевики, а шпионские романы, либо опять уходить в космооперу.<br/>
+<br/>
+И так, без стелса в космосе плохо. Но может быть он там все-таки есть? Ведь статья на «Атомных ракетах» по определению не является истиной в последней инстанции, а практического опыта космической войны у нас пока еще нет.<br/>
+ <br/>
+Против стелса в космосе говорят следующие факты объективной реальности:<br/>
+<br/>
+<ol>
+<li>Вакуум обладает максимальной возможной прозрачностью.</li>
+<li>Фон либо имеет температуру 4 К (реликтовое излучение), либо предсказуем (звезды).</li>
+<li>Корабль неизбежно излучает тепло произведенное внутри него и отражает, либо переизлучает солнечный свет. Особенно когда маневрирует.</li>
+<li>Чувствительности современных телескопов достаточно чтобы сделать снимок «Вояджера» за орбитой Плутона в ИК-диапазоне.</li>
+</ol><br/>
+ И что же мы можем с этим сделать? Ответ под катом.<br/>
+ <a href="https://habr.com/post/429092/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429092#habracut">Читать дальше &rarr;</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 17:00:17 GMT</pubDate>
+      <dc:creator>GM-2</dc:creator>
+      <category><![CDATA[Космонавтика]]></category>
+      <category><![CDATA[Научная фантастика]]></category>
+      <category><![CDATA[Научно-популярное]]></category>
+      <category>Ложные цели</category>
+      <category>дифракция</category>
+      <category>пыль</category>
+    </item>
+    <item>
+      <title><![CDATA[[Перевод] Введение в обучение с подкреплением]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429090/</guid>
+      <link>https://habr.com/post/429090/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429090</link>
+      <description><![CDATA[Всем привет!<br>
+<br>
+Мы открыли новый поток на курс <a href="https://otus.pw/4a40/">«Machine learning»</a>, так что ждите в ближайшее время статей связанных с данной, так сказать, дисциплиной. Ну и разумеется открытых семинаров. А сейчас давайте рассмотрим, что такое обучение с подкреплением.<br>
+<br>
+Обучение с подкреплением является важным видом машинного обучения, где агент учится вести себя в окружающей среде, выполняя действия и видя результаты.<br>
+<br>
+В последние годы мы наблюдаем много успехов в этой увлекательной области исследований. Например, <a href="https://deepmind.com/research/dqn/">DeepMind и Deep Q Learning Architecture</a> в 2014 году, <a href="https://deepmind.com/research/alphago/">победа над чемпионом по игре в го с AlphaGo </a>в 2016, <a href="https://blog.openai.com/openai-baselines-ppo/">OpenAI и PPO</a> в 2017 году, среди прочих.<br>
+<br>
+<img src="https://habrastorage.org/webt/_q/bo/5c/_qbo5cmhnkdgpvhwcipzifybbeg.png"> <a href="https://habr.com/post/429090/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429090#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 16:40:46 GMT</pubDate>
+      <dc:creator>MaxRokatansky</dc:creator>
+      <category><![CDATA[Блог компании Отус]]></category>
+      <category><![CDATA[Big Data]]></category>
+      <category><![CDATA[Data Mining]]></category>
+      <category>machine learning</category>
+      <category>deep learning</category>
+      <category>big data</category>
+      <category>data mining</category>
+    </item>
+    <item>
+      <title><![CDATA[Направленный звук: технология, которая может заменить наушники — как она работает]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429094/</guid>
+      <link>https://habr.com/post/429094/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429094</link>
+      <description><![CDATA[В следующем году на выставке CES 2019 стартап Noveto планирует <a href="https://www.businessinsider.com/noveto-focused-audio-technology-could-make-headphones-obsolete-2018-6">представить</a> аудиосистему с направленным звучанием, предназначенную для массового рынка. Это акустическая колонка, звук от которой слышит его лишь один человек в комнате, как если бы он надел наушники.<br>
+<br>
+Рассказываем, как это работает и где уже применяют такие технологии.<br>
+<br>
+<a href="https://habr.com/company/audiomania/blog/429094/"><img src="https://habrastorage.org/webt/3r/ck/ga/3rckgagbbeferrsxvmxers8m28k.jpeg"></a> <a href="https://habr.com/post/429094/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429094#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 17:36:47 GMT</pubDate>
+      <dc:creator>Audioman</dc:creator>
+      <category><![CDATA[Блог компании Аудиомания]]></category>
+      <category><![CDATA[Звук]]></category>
+      <category><![CDATA[аудиомания]]></category>
+      <category><![CDATA[звук]]></category>
+      <category><![CDATA[направленный звук]]></category>
+      <category><![CDATA[наушники]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Volvo и Baidu будут разрабатывать беспилотные автомобили вместе]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429016/</guid>
+      <link>https://habr.com/post/429016/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429016</link>
+      <description><![CDATA[<img src="https://habrastorage.org/getpro/habr/post_images/2de/554/ccd/2de554ccd8be4daaa53340aa64cb5041.jpg"><br>
+<br>
+Компании Volvo и Baidu <a href="https://www.bloomberg.com/news/articles/2018-11-01/volvo-in-pact-with-baidu-to-develop-autonomous-cars-for-china">подписали</a> договор о совместной работе по созданию беспилотных автомобилей. У партнеров есть четко ограниченный круг обязанностей: Volvo отвечает, собственно, за автомобили и установку оборудования, а Baidu разрабатывает программное обеспечение робомобиля. <br>
+<br>
+В большинстве случаев беспилотные системы создают технологические компании, которые устанавливают свои «автопилоты» на стандартные автомобили. Такая практика не является оптимальной, поскольку стандартный автомобиль не адаптирован под самостоятельную езду. По этой причине Volvo и подписала сообщение с Baidu — компании будут стремиться достичь «золотой середины» в объединении автомобильного «железа» и программных решений. <br> <a href="https://habr.com/post/429016/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429016#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 09:31:41 GMT</pubDate>
+      <dc:creator>marks</dc:creator>
+      <category><![CDATA[Автомобильные гаджеты]]></category>
+      <category><![CDATA[Транспорт будущего]]></category>
+      <category><![CDATA[автомобили]]></category>
+      <category><![CDATA[baidu]]></category>
+      <category><![CDATA[роботакси]]></category>
+      <category><![CDATA[volvo]]></category>
+    </item>
+    <item>
+      <title><![CDATA[[Из песочницы] Вторая жизнь электродуховки «Харьков»]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429084/</guid>
+      <link>https://habr.com/post/429084/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429084</link>
+      <description><![CDATA[Всем привет.<br/>
+<br/>
+Не буду делать долгие и лирические вступления о том как коротка и жестока судьба бытовой техники. То что еще вчера воспринималось как последнее достижение прогресса, сегодня уже будет привычной частью среднестатистического домохозяйства, а завтра будет просто выброшено на свалку, не смотря на полную работоспособность или в лучшем случае – разобрано на запчасти как донор деталей. Ибо «тут кнопки, а хочу сенсор», и «дизайн совковый» и «нет этой фишки». И ладно если речь идет о какой то китайской микроволновке или чайнике, к которым и привыкнуть то толком не успеваешь из-за их короткого жизненного цикла и пластиковой бездуховности.<br/>
+<br/>
+Но что делать, когда речь идет о вещи, которая помнит несколько поколений твоей семьи и с детства была для тебя воплощением домашнего уюта, бабушкиных вкусностей и всего самого «лампового». Выкинуть рука не поднимется, как с этой вещью уж слишком много воспоминаний и вообще сие есть кощунство. Но и использовать ну уж никак не представляется возможным по причине тотального устаревания и откровенно непрезентабельного вида. <br/>
+<br/>
+Что делать? <br/>
+<br/>
+Правильно! Воскрешать.<br/>
+ <a href="https://habr.com/post/429084/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429084#habracut">Читать дальше &rarr;</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 15:56:23 GMT</pubDate>
+      <dc:creator>Konstacio</dc:creator>
+      <category><![CDATA[Программирование микроконтроллеров]]></category>
+      <category><![CDATA[Разработка под Arduino]]></category>
+      <category><![CDATA[Электроника для начинающих]]></category>
+      <category>ардуино</category>
+      <category>для начинающих</category>
+      <category>техническое творчество</category>
+    </item>
+    <item>
+      <title><![CDATA[Microsoft отрывается от Amazon по доходу от облачных сервисов]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429080/</guid>
+      <link>https://habr.com/post/429080/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429080</link>
+      <description><![CDATA[Второй год Microsoft сохраняет звание крупнейшего облачного сервиса в мире. Она <a href="https://www.forbes.com/sites/bobevans1/2018/02/05/why-microsoft-is-ruling-the-cloud-ibm-is-matching-amazon-and-google-is-15-billion-behind/#6086f27a1dc1">обогнала Amazon по итогам 2017 года</a>, а в этом году отрыв ещё больше увеличился. Выручка редмондской компании в III кв. 2018 года составила $8,5 млрд. Microsoft впереди за последние 12 месяцев: <a href="https://www.forbes.com/sites/bobevans1/2018/10/29/1-microsoft-beats-amazon-in-12-month-cloud-revenue-26-7-billion-to-23-4-billion-ibm-third/">$26,7 млрд против $23,4 млрд долларов</a>.<br>
+<br>
+«Бакалейщики, розничные торговцы, онлайн-маркетологи, компании по доставке, а теперь и аптечные/медицинские компании сталкиваются с жестокой конкуренцией со сшибающего всё броневика Amazon — так зачем любой компании в любой из этих отраслей добровольно субсидировать конкурента Amazon, выбрав дочернюю компанию AWS в качестве своего поставщика облачных вычислений?», — <a href="https://www.forbes.com/sites/bobevans1/2018/06/29/will-amazon-damage-its-cloud-business-by-competing-directly-against-aws-customers/#106f93b52999">задаёт вопрос</a> Forbes.<br> <a href="https://habr.com/post/429080/#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 15:38:35 GMT</pubDate>
+      <dc:creator>alizar</dc:creator>
+      <category><![CDATA[IT-компании]]></category>
+      <category><![CDATA[Microsoft Azure]]></category>
+      <category><![CDATA[Облачные сервисы]]></category>
+      <category><![CDATA[Azure]]></category>
+      <category><![CDATA[AWS]]></category>
+      <category><![CDATA[финансирование конкурента]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Советы начинающему хостеру]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429048/</guid>
+      <link>https://habr.com/post/429048/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429048</link>
+      <description><![CDATA[Предположим, одним <s>теплым летним</s> дождливым осенним днем вы шли по улице и решили, что хорошо бы начать продавать виртуальные серверы посторонним лицам. В этой статье я постараюсь рассказать о своих наблюдениях и ошибках, которые можно совершить, занимаясь предоставлением таких услуг.<br>
+<br>
+Самое первое, что нужно сделать — это понять действительно ли вы хотите заниматься хостинговым бизнесом. Количество игроков на рынке очень большое, маржа на услуги маленькая, зато взамен можно обрести много бессонных ночей, связанных, например, с DDoS-атаками или абузами на IP-адреса.<br>
+<br>
+<img src="https://habrastorage.org/webt/rt/_3/pt/rt_3ptmva6l-uzsi_j11vsccmxu.png"><br>
+<sup>В этой папке есть все: пальмы, девушки, голубые экспрессы, синее море, белый пароход, малопоношенный смокинг, лакей-японец, платиновые зубы, носки без дырочек, собственный бильярд, а самое главное — власть, уважение, слава, которую дают деньги</sup><br> <a href="https://habr.com/post/429048/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429048#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 13:56:25 GMT</pubDate>
+      <dc:creator>leonid239</dc:creator>
+      <category><![CDATA[Блог компании Поиск VPS]]></category>
+      <category><![CDATA[Бизнес-модели]]></category>
+      <category><![CDATA[Интернет-маркетинг]]></category>
+      <category><![CDATA[Развитие стартапа]]></category>
+      <category><![CDATA[Хостинг]]></category>
+      <category><![CDATA[хостинг]]></category>
+      <category><![CDATA[poiskvps]]></category>
+    </item>
+    <item>
+      <title><![CDATA[[recovery mode] Несколько историй про подпольных программистов]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429034/</guid>
+      <link>https://habr.com/post/429034/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429034</link>
+      <description><![CDATA[<h1 id="prodazhnik-programmist">Продажник-программист</h1><br>
+<p>Попал я однажды в организацию, занимающуюся организацией оффлайновых конференций. Им нужен был человек для поддержки сайта. Разговаривал со мной мужчина в пиждаке и при галстуке, представившийся начальником отдела продаж. От общих тем быстро перешли к техническим. Заглянули в код. Свой ORM, самописный шаблонизатор, немного устаревшие приёмы, но в принципе всё стройно, логично и однообразно. Я спросил, что стало с предыдущим программистом, на что собеседник рассказал мне историю.</p><br>
+<p>Лет десять назад моего собеседника наняли на должность продажника. Чуть ли не в первую неделю работы он сломал ногу и сидел дома три месяца. Работать по специальности он не мог, но директор, зная что у моего собеседника инженерное образование, попросил наполнить контентом их сайт-визитку. </p><br>
+<p><img src="https://habrastorage.org/webt/eh/ir/8s/ehir8sjgqrr7mwrdckftaut4nfm.jpeg" alt="image"></p> <a href="https://habr.com/post/429034/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429034#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 13:57:53 GMT</pubDate>
+      <dc:creator>mikhailian</dc:creator>
+      <category><![CDATA[Управление персоналом]]></category>
+      <category><![CDATA[Читальный зал]]></category>
+      <category><![CDATA[undercover programmers]]></category>
+      <category><![CDATA[управление персоналом]]></category>
+      <category><![CDATA[программисты спасут мир]]></category>
+      <category><![CDATA[серые программисты]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Полёт свиньи, или Оптимизация интерпретаторов байт-кода]]></title>
+      <guid isPermaLink="true">https://habr.com/post/428878/</guid>
+      <link>https://habr.com/post/428878/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428878</link>
+      <description><![CDATA[<p><img src="https://habrastorage.org/webt/bg/lp/cz/bglpczwnjg-u0usatiwfxggd-zi.jpeg"></p><br>
+<blockquote>"No matter how hard you try, you can't make a racehorse out of a pig. You can, however, make a faster pig" (комментарий в исходном коде Емакса)</blockquote><p>Всем известен тот факт, что свиньи не летают. Не менее популярно мнение о том, что интерпретаторы байт-кодов как техника исполнения языков высокого уровня не поддаются ускорению без применения трудоёмкой динамической компиляции.</p><br>
+<p>Во второй части серии статей об интерпретаторах байт-кодов я на примере небольшой стековой виртуальной машины ПВМ («Поросячья Виртуальная Машина») постараюсь показать, что не всё потеряно для трудолюбивых поросят с амбициями и что в рамках (в основном) стандартного C вполне возможно ускорить работу таких интерпретаторов по меньшей мере в полтора раза.</p> <a href="https://habr.com/post/428878/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428878#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 15:01:02 GMT</pubDate>
+      <dc:creator>VlK</dc:creator>
+      <category><![CDATA[Блог компании Badoo]]></category>
+      <category><![CDATA[C]]></category>
+      <category><![CDATA[C++]]></category>
+      <category><![CDATA[Компиляторы]]></category>
+      <category><![CDATA[Программирование]]></category>
+      <category><![CDATA[интерпретаторы]]></category>
+      <category><![CDATA[байт-код]]></category>
+      <category><![CDATA[виртуальная машина]]></category>
+      <category><![CDATA[компиляторы]]></category>
+      <category><![CDATA[C]]></category>
+      <category><![CDATA[c++]]></category>
+    </item>
+    <item>
+      <title><![CDATA[На новых MacBook невозможно загрузить Linux из-за чипа T2]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429070/</guid>
+      <link>https://habr.com/post/429070/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429070</link>
+      <description><![CDATA[<div style="text-align:center;"><img src="https://habrastorage.org/getpro/habr/post_images/eb3/a1a/a5b/eb3a1aa5ba7cab80f19b23f9691a2a5c.jpg"></div><br>
+Энтузиасты Linux частенько ставят свободную ОС на оборудовании Apple, в том числе MacBook Air. Так они получают двойную выгоду: и удобную операционную систему из привычного дистрибутива, и надёжность «железа» Apple, Даже Линус Торвальдс раньше использовал MacBook Air таким образом.<br>
+<br>
+Однако эти счастливые времена могут остаться в прошлом. Новая линейка оборудования Apple стала более враждебной по отношению к Linux. Проблема в новом <a href="https://www.apple.com/mac/docs/Apple_T2_Security_Chip_Overview.pdf">чипе безопасности T2</a>, который Apple добавила в последние модели своих компьютеров. Он эффективно блокирует загрузку Linux на Mac Mini, <a href="https://www.phoronix.com/scan.php?page=news_item&amp;px=Apple-T2-Blocks-Linux-UEFI">сообщает</a> издание Linux-сообщества Phoronix. Судя по всему, аналогичная ситуация и на других моделях компьютеров, где установлен этот чип.<br> <a href="https://habr.com/post/429070/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429070#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 14:41:29 GMT</pubDate>
+      <dc:creator>alizar</dc:creator>
+      <category><![CDATA[Информационная безопасность]]></category>
+      <category><![CDATA[Компьютерное железо]]></category>
+      <category><![CDATA[Настройка Linux]]></category>
+      <category><![CDATA[Ноутбуки]]></category>
+      <category><![CDATA[T2]]></category>
+      <category><![CDATA[Linux]]></category>
+    </item>
+    <item>
+      <title><![CDATA[[Из песочницы] Неизбежным старение делает физика, а не биология]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429056/</guid>
+      <link>https://habr.com/post/429056/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429056</link>
+      <description><![CDATA[Привет, Хабр! Представляю вашему вниманию перевод статьи <a href="http://nautil.us/issue/36/aging/physics-makes-aging-inevitable-not-biology">Physics Makes Aging Inevitable, Not Biology</a>. Автор <a href="https://clasprofiles.wayne.edu/profile/aj6883">Peter Hoffmann</a>.<br/>
+<br/>
+<h3>Наномасштабная теплофизика гарантирует наше угасание, независимо от того, сколько болезней мы излечим</h3><br/>
+Внутренности каждой клетки нашего тела подобны перенаселенному городу заполненному путями, транспортом, библиотеками, фабриками, электростанциями и мусоропроводами. Рабочие этого города белковые машины, которые усваивают пищу, вывозят мусор или восстанавливают ДНК. Грузы перемещаются из одного места в другое с помощью молекулярных машин, передвигающихся на двух ножках по белковым канатам. Пока эти машины занимаются своим делом, окружающие тысячи молекул воды случайным образом врезаются в них миллионы раз в секунду. Это явление, которое физики эвфемистически называют «тепловым движением», и которое более уместно назвать чудовищным тепловым хаосом.<br/>
+<br/>
+<img src="https://habrastorage.org/webt/en/pg/52/enpg52n4hgxweqmquv0dmw_3bki.jpeg"/><br/>
+ <a href="https://habr.com/post/429056/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429056#habracut">Читать дальше &rarr;</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 13:17:04 GMT</pubDate>
+      <dc:creator>phenik</dc:creator>
+      <category><![CDATA[Биотехнологии]]></category>
+      <category><![CDATA[Здоровье гика]]></category>
+      <category><![CDATA[Научно-популярное]]></category>
+      <category><![CDATA[Физика]]></category>
+      <category>биология</category>
+      <category>физика</category>
+      <category>старение</category>
+      <category>борьба со старением</category>
+      <category>продление жизни</category>
+      <category>sens</category>
+    </item>
+    <item>
+      <title><![CDATA[Квантовый процессор на базе спинового резонанса и манипуляций с синглетной-триплетной системой]]></title>
+      <guid isPermaLink="true">https://habr.com/post/428786/</guid>
+      <link>https://habr.com/post/428786/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428786</link>
+      <description><![CDATA[<img src="https://habrastorage.org/webt/t2/cm/db/t2cmdbgpll9uxqynjwbi1een9pe.png"><br>
+<br>
+Ох уж эти квантовые технологии. Они заполонили умы ученых по всему миру, как Pokemon GO в свое время заполонил умы пользователей смартфонов. Сравнение конечно не самое хорошее, ибо первые принесут пользу, второе — принесло толпы людей в парках, но далеко не ради свежего воздуха или пикника. Сегодня мы будем разбираться в исследовании, нацеленом на создании масштабируемого квантового процессора, умеющего находить и исправлять ошибки. Для работы такого процессора требуется контроль над множеством кубитов (квантовых битов) параллельно, пока протекает процесс обнаружения ошибок среди выбранных кубитов. То есть жонглируем одной рукой, а второй показываем карточные фокусы. Задача, мягко говоря, не из легких. Давайте же узнаем как ученые из Австралии смогли реализовать такой сложный замысел на практике. Поехали. <a href="https://habr.com/post/428786/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428786#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 10:00:03 GMT</pubDate>
+      <dc:creator>Dmytro_Kikot</dc:creator>
+      <category><![CDATA[Блог компании ua-hosting.company]]></category>
+      <category><![CDATA[Квантовые технологии]]></category>
+      <category><![CDATA[Нанотехнологии]]></category>
+      <category><![CDATA[Научно-популярное]]></category>
+      <category><![CDATA[Процессоры]]></category>
+      <category><![CDATA[квантовая физика]]></category>
+      <category><![CDATA[кубиты]]></category>
+      <category><![CDATA[спины]]></category>
+      <category><![CDATA[электроны]]></category>
+      <category><![CDATA[процессоры]]></category>
+    </item>
+    <item>
+      <title><![CDATA[[Перевод] Учёные позволили роботам эволюционировать, и получили нечто странное]]></title>
+      <guid isPermaLink="true">https://habr.com/post/428936/</guid>
+      <link>https://habr.com/post/428936/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428936</link>
+      <description><![CDATA[<div style="text-align:center;"><img src="https://habrastorage.org/getpro/habr/post_images/631/d9c/4d4/631d9c4d4f4d9bcdd96de6880ce2c6a7.jpg"></div> <br>
+Эволюция – это путешествие. С одной стороны, это вроде бы простой механизм – особи, лучше приспособленные к окружающей среде, рожают больше детей, а меньше приспособленные не размножаются так сильно, и их гены отфильтровываются. С другой стороны, она смогла породить потрясающий набор организмов. Некоторые животные летают при помощи оперённых крыльев, другие при помощи мембран, растянутых между пальцами. Некоторые бегают на двух ногах, другие на четырёх. И все по-своему адаптировались к своему окружению.<br>
+<br>
+Эволюция – штука мощная, и к этой силе за вдохновением сегодня обращаются специалисты по робототехнике. Новое концептуальное исследование австралийских учёных изучает вопрос того, как эволюционные алгоритмы могут порождать ноги для роботов, приспособленные для ходьбы по определённым поверхностям. Результаты получились одновременно логичными, контринтуитивными и странными – а также намекают на новый способ изготовления ходячих машин.<br> <a href="https://habr.com/post/428936/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428936#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 12:00:01 GMT</pubDate>
+      <dc:creator>SLY_G</dc:creator>
+      <category><![CDATA[Биотехнологии]]></category>
+      <category><![CDATA[Искусственный интеллект]]></category>
+      <category><![CDATA[Разработка робототехники]]></category>
+      <category><![CDATA[Робототехника]]></category>
+      <category>крылья</category>
+      <category>ноги</category>
+      <category>главное хвост</category>
+      <category>эволюция</category>
+    </item>
+    <item>
+      <title><![CDATA[Новости Rust #2 (октябрь 2018)]]></title>
+      <guid isPermaLink="true">https://habr.com/post/429038/</guid>
+      <link>https://habr.com/post/429038/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429038</link>
+      <description><![CDATA[<p><img src="https://habrastorage.org/webt/ql/t5/od/qlt5odbenleyvuaf_gbmrwcyrlo.jpeg" alt="КДПВ с тыквой, потому что хэллоуин"></p><br>
+<p>Лучше с задержкой на неделю, чем никогда, так что предлагаю вашему вниманию субъективную подборку ржавых новостей за октябрь.</p><br>
+<p>В этой подборке: Rust 1.30, Rust 2018, конференция RustRush, Amethyst 0.9, сквотинг crates.io, сборщик мусора, споры про 2D графику, Non-lexical lifetimes, функциональный GUI.</p><br>
+<h2 id="rust-130-i-testirovanie-rust2018">Rust 1.30 и тестирование Rust2018</h2><br>
+<p>Вышел Rust 1.30 (<a href="https://www.reddit.com/r/rust/comments/9rbxnv/announcing_rust_130/">обсуждение</a>). Основные нововведения — частичная стабилизация процедурных макросов, импорт макросов через обычный <code>use</code>, улучшение системы модулей, "сырые" идентификаторы и поддержка <code>no_std</code> приложений (подробнее в <a href="https://habr.com/post/428073/">хабропереводе</a>).</p><br>
+<p>Rust 1.31 будет первым выпуском <a href="https://rust-lang-nursery.github.io/edition-guide/rust-2018/index.html">редакции (edition) "Rust2018"</a> (<a href="https://rust-lang-nursery.github.io/edition-guide/editions/index.html">что за "редакции"?</a>), в связи с чем <a href="https://blog.rust-lang.org/2018/10/30/help-test-rust-2018.html">всех желающих приглашают подключаться к тестированию бета версии 1.31 и cargo fix</a>.</p><br>
+<h2 id="rustrush-2018httpsrustrushru-konferenciya-15-16-dekabrya-v-moskve"><a href="https://rustrush.ru">RustRush 2018</a>: конференция 15-16 декабря в Москве</h2><br>
+<p>RustRush 2018 — конференция для разработчиков на Rust, посвящённая вебу, блокчейну, высокой производительности и системному программированию.</p><br>
+<p>Обновился сайт (<a href="https://rustrush.ru">rustrush.ru</a>) — опубликован почти полный <a href="https://rustrush.ru/speakers">список докладчиков</a> и <a href="https://rustrush.ru/program">программа</a>, начата <a href="https://rustrush.ru/buy">продажа основной партии билетов</a>.</p><br>
+<p>Будут четыре участника проекта Rust Language: Стив Клабник, Эшли Уильямс, Паскаль Хертлиф, Катарина Фей. Из других звёзд локальных и не очень — Максим Лапшин с прошивкой IP-камеры, Костя Степанов и Пьер Кригер aka tomaka. <a href="https://rustrush.ru/program.html">Программа</a>.</p> <a href="https://habr.com/post/429038/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=429038#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 11:35:48 GMT</pubDate>
+      <dc:creator>ozkriff</dc:creator>
+      <category><![CDATA[Open source]]></category>
+      <category><![CDATA[Rust]]></category>
+      <category><![CDATA[WebAssembly]]></category>
+      <category><![CDATA[Программирование]]></category>
+      <category><![CDATA[Системное программирование]]></category>
+      <category><![CDATA[подборка]]></category>
+      <category><![CDATA[дайджест]]></category>
+      <category><![CDATA[ссылки]]></category>
+      <category><![CDATA[embedded]]></category>
+      <category><![CDATA[rust]]></category>
+      <category><![CDATA[wasm]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Курс «Введение в Perl» от Mail.Ru Group]]></title>
+      <guid isPermaLink="true">https://habr.com/post/428924/</guid>
+      <link>https://habr.com/post/428924/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428924</link>
+      <description><![CDATA[<img src="https://habrastorage.org/getpro/habr/post_images/b9c/b9f/7ad/b9cb9f7adccb68c8cc2425854517b197.jpg" alt="image"><br>
+<br>
+В ноябре на платформе Степик стартует курс «<a href="https://stepik.org/course/3039/">Введение в Perl</a>» от разработчиков Mail.Ru Group, где слушатели будут иметь возможность изучить основы программирования на языке Perl и обозначить направления для дальнейшего развития.<br>
+<br>
+В процессе обучения будут рассматриваться синтаксис языка, работа с модулями, ООП, регулярные выражения, однострочники, взаимодействие языка с операционной системой, основы ввода-вывода и параллелизм. Основной акцент сделан на базовых знаниях языка и системном программировании. Программа рассчитана на новичков: для освоения курса достаточно иметь представление об алгоритмах и знать базовые понятия (переменная, условный оператор и т.д.).<br> <a href="https://habr.com/post/428924/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428924#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 12:36:59 GMT</pubDate>
+      <dc:creator>tanna</dc:creator>
+      <category><![CDATA[Блог компании Mail.Ru Group]]></category>
+      <category><![CDATA[IT-компании]]></category>
+      <category><![CDATA[Perl]]></category>
+      <category><![CDATA[Программирование]]></category>
+      <category><![CDATA[perl]]></category>
+    </item>
+    <item>
+      <title><![CDATA[Джеффри Рихтер, Павел Йосифович, Грег Янг и все-все-все. Хардкор и архитектура на DotNext 2018 Moscow]]></title>
+      <guid isPermaLink="true">https://habr.com/post/428624/</guid>
+      <link>https://habr.com/post/428624/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428624</link>
+      <description><![CDATA[Совсем скоро, 22-23 ноября пройдёт следующий московский DotNext. <a href="https://dotnext-moscow.ru/#schedule">Программа</a> стала более определенной, поэтому хотелось бы поделиться несколькими наблюдениями про хардкорные и архитектурные доклады.<br>
+<br>
+Во-первых, есть часть докладчиков «без категории». Это те люди, которые сами по себе могли бы заполнить отдельную конференцию. Их имена вы знаете: <strong>Джеффри Рихтер</strong>, <strong>Павел Йосифович</strong> и <strong>Грег Янг</strong>.<br>
+<br>
+Обычно в статьях на Хабре рядом со спикером мы сразу приводим его фотографию. В случае с Джеффри и Павлом случай особый — вы лучше вспомните этих людей по обложкам книг:<br>
+<br>
+<img src="https://habrastorage.org/webt/h6/fa/dc/h6fadccv-f_yh50b5ephpb5kug4.png"><br>
+<br> <a href="https://habr.com/post/428624/?utm_source=habrahabr&amp;utm_medium=rss&amp;utm_campaign=428624#habracut">Читать дальше →</a>]]></description>
+      <pubDate>Wed, 07 Nov 2018 11:08:47 GMT</pubDate>
+      <dc:creator>olegchir</dc:creator>
+      <category><![CDATA[Блог компании JUG.ru Group]]></category>
+      <category><![CDATA[.NET]]></category>
+      <category><![CDATA[Высокая производительность]]></category>
+      <category><![CDATA[Конференции]]></category>
+      <category><![CDATA[Системное программирование]]></category>
+      <category><![CDATA[dotnet]]></category>
+      <category><![CDATA[dotnext]]></category>
+      <category><![CDATA[dotnext2018]]></category>
+      <category><![CDATA[dotnext2018m]]></category>
+    </item>
+  </channel>
+</rss>

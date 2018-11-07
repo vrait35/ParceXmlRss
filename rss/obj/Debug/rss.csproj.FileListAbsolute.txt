@@ -1,0 +1,7 @@
+C:\Users\anuar\source\repos\rss\rss\bin\Debug\rss.exe.config
+C:\Users\anuar\source\repos\rss\rss\bin\Debug\rss.exe
+C:\Users\anuar\source\repos\rss\rss\bin\Debug\rss.pdb
+C:\Users\anuar\source\repos\rss\rss\obj\Debug\rss.csprojResolveAssemblyReference.cache
+C:\Users\anuar\source\repos\rss\rss\obj\Debug\rss.csproj.CoreCompileInputs.cache
+C:\Users\anuar\source\repos\rss\rss\obj\Debug\rss.exe
+C:\Users\anuar\source\repos\rss\rss\obj\Debug\rss.pdb
