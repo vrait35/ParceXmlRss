@@ -43,19 +43,19 @@ namespace rss
             }
             for (int i = 0; i < max; i++)
             {
-                if (i <= tileList.Count)
+                if (i <= tileList.Count-1)
                 {
                     loadedItem[i].Title = tileList[i].InnerText;
                 }
-                if (i <= linkList.Count)
+                if (i <= linkList.Count-1)
                 {
                     loadedItem[i].Link = linkList[i].InnerText;
                 }
-                if (i <= pubDateList.Count)
+                if (i <= pubDateList.Count-1)
                 {
                     loadedItem[i].PubDate = pubDateList[i].InnerText;
                 }
-                if (i <= descriptionList.Count)
+                if (i <= descriptionList.Count-1)
                 {
                     loadedItem[i].Discription = descriptionList[i].InnerText;
                 }
